@@ -47,13 +47,10 @@ class ArrowClipPath extends CustomClipper<Path> {
   Path getClip(Size size) {
     Path path = Path();
     path.moveTo(0, size.height);
-    path.arcToPoint(Offset(size.width, size.height-weight), radius: Radius.circular(size.width/2));
+    path.arcToPoint(Offset(size.width, size.height), radius: Radius.circular(size.width/2));
     path.lineTo(size.width - weight, size.height);
-    path.arcToPoint(Offset(weight, size.height), radius: Radius.circular((size.width - weight * 2)/2));
+    path.arcToPoint(Offset(weight, size.height), radius: Radius.circular((size.width - weight * 2)/2), clockwise: false);
     path.lineTo(0, size.height);
-    // path.arcToPoint(Offset(size.width, size.height),
-    //     radius: Radius.circular(50));
-    // path.lineTo(size.width, 0);
     return path;
   }
 

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:new_flutter/Widgets/dial.dart';
+import 'package:new_flutter/Widgets/paper.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,6 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -28,10 +31,17 @@ class _MyHomePageState extends State<MyHomePage> {
   Offset _positionBtn = Offset(16, 16);
 
   @override
+  void initState() {
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
         children: [
+          Paper(),
           Positioned(
             top: _positionBtn.dy,
             left: _positionBtn.dx,
